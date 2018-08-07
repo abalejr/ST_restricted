@@ -382,7 +382,12 @@ function wl_get_latest_updates_query($access = array(), $count = 6)
 function wl_redirect_if_not_logged_in()
 {
     if (!is_user_logged_in()) {
-        wp_redirect(home_url('dashboard/account'));
+        $parent_page_id = wp_get_post_parent_id(get_the_ID());
+        if ($parent_page_id === 401613) {
+            wp_redirect(home_url('?page_id=401613'));
+        } else {
+            wp_redirect(home_url('dashboard/account'));
+        }
     }
 }
 
