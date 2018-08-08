@@ -382,7 +382,8 @@ function wl_get_latest_updates_query($access = array(), $count = 6)
 function wl_redirect_if_not_logged_in()
 {
     if (!is_user_logged_in()) {
-        $parent_page_id = echo do_shortcode("[loop child=this count=1][field id][/loop]");
+        $page_id = get_field('id');
+        $parent_page_id = wp_get_post_parent_id($page_id);
         if ($parent_page_id === 401613) {
             wp_redirect(home_url('restricted-messaging-test'));
         } else {
