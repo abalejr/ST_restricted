@@ -378,16 +378,45 @@ function wl_get_latest_updates_query($access = array(), $count = 6)
 
     return new WP_Query($query_args);
 }
-
 function wl_redirect_if_not_logged_in()
+{
+    if (!is_user_logged_in()) {
+        wp_redirect(home_url('dashboard/account'));
+    }
+}
+
+// Redirect to restricted access or login page if not logged in
+
+function st_redirect_if_not_logged_in()
 {
     if (!is_user_logged_in()) {
         $page_id = get_field('id');
         $parent_page_id = wp_get_post_parent_id($page_id);
-        if ($parent_page_id === 401613) {
+        if ($page_id === 401613 or $parent_page_id === 401613) {
             wp_redirect(home_url('dashboard/options/get-access'));
         } else {
             wp_redirect(home_url('dashboard/account'));
+        }
+    }
+}
+
+// Redirect to restricted access if missing membership
+
+function st_redirect_if_not_member()
+{
+    $page_id = get_field('id');
+
+    $parent_page_id = wp_get_post_parent_id($page_id);
+
+    $user_active_memberships = wc_memberships_get_user_active_memberships();
+
+    if ($page_id === 401613 or $parent_page_id === 401613) {
+        $valid_memberships = array("optionsgold", "optionssilver", "academy");
+
+        $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
+        
+        if (count($user_valid_memberships) < 1) {
+            wp_redirect(home_url('dashboard/options/get-access'));
         }
     }
 }
