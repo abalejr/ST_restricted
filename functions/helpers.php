@@ -405,43 +405,43 @@ function wl_redirect_if_not_logged_in()
         $user_active_memberships = wc_memberships_get_user_active_memberships();
 
         if (is_page(401613) or $parent_page_id === 401613) {
-            $valid_memberships = array("optionsgold", "optionssilver", "academy");
+            $valid_memberships = ["optionsgold", "optionssilver", "academy"];
             $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
             if (count($user_valid_memberships) === 0) {
                 wp_redirect(home_url('dashboard/options/get-access'));
             }
         } elseif (is_page(401958) or $parent_page_id === 401958) {
-            $valid_memberships = array("futuresgold", "futuressilver");
+            $valid_memberships = ["futuresgold", "futuressilver"];
             $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
             if (count($user_valid_memberships) === 0) {
                 wp_redirect(home_url('dashboard/futures/get-access'));
             }
         } elseif (is_page(401988) or $parent_page_id === 401988) {
-            $valid_memberships = array("optionsgold", "futuresgold", "bias", "fibonaccigold", "crypto", "foundation");
+            $valid_memberships = ["optionsgold", "futuresgold", "bias", "fibonaccigold", "crypto", "foundation"];
             $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
             if (count($user_valid_memberships) === 0) {
                 wp_redirect(home_url('dashboard/foundation/get-access'));
             }
         } elseif (is_page(402186) or $parent_page_id === 402186) {
-            $valid_memberships = array("bias");
+            $valid_memberships = ["bias"];
             $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
             if (count($user_valid_memberships) === 0) {
                 wp_redirect(home_url('dashboard/BIAS/get-access'));
             }
         } elseif (is_page(402191) or $parent_page_id === 402191) {
-            $valid_memberships = array("fibonaccigold", "fibonaccisilver");
+            $valid_memberships = ["fibonaccigold", "fibonaccisilver"];
             $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
             if (count($user_valid_memberships) === 0) {
                 wp_redirect(home_url('dashboard/fibonacci/get-access'));
             }
         } elseif (is_page(402190) or $parent_page_id === 402190) {
-            $valid_memberships = array("crypto", "cryptosilver");
+            $valid_memberships = ["crypto", "cryptosilver"];
             $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
             if (count($user_valid_memberships) === 0) {
                 wp_redirect(home_url('dashboard/crypto/get-access'));
             }
         } elseif (is_page(402907) or $parent_page_id === 402907) {
-            $valid_memberships = array("scanner");
+            $valid_memberships = ["scanner"];
             $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
             if (count($user_valid_memberships) === 0) {
                 wp_redirect(home_url('dashboard/scanner/get-access'));
