@@ -401,7 +401,7 @@ function wl_redirect_if_not_logged_in()
         } else {
             wp_redirect(home_url('dashboard/account'));
         }
-    } else {
+    } /* else {
         $user_active_memberships = wc_memberships_get_user_active_memberships();
 
         if ($page_id === 401613 or $parent_page_id === 401613) {
@@ -426,11 +426,11 @@ function wl_redirect_if_not_logged_in()
             $valid_memberships = array("scanner");
             $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
         }
-        
+
         if (count($user_valid_memberships) < 1) {
             wp_redirect(home_url('dashboard/options/get-access'));
         }
-    }
+    } */
 }
 
 function wl_get_dashboard_page_title($post_id)
