@@ -401,7 +401,7 @@ function wl_redirect_if_not_logged_in()
         } else {
             wp_redirect(home_url('dashboard/account'));
         }
-    } else if (is_user_logged_in()) {
+    } elseif (is_user_logged_in()) {
         $page_id = get_field('id');
         $parent_page_id = wp_get_post_parent_id($page_id);
         $user_active_memberships = wc_memberships_get_user_active_memberships();
