@@ -413,23 +413,23 @@ function wl_redirect_if_not_logged_in()
             }
         } elseif (is_page(401988) or $parent_page_id === 401988) {
             if (!wc_memberships_is_user_active_member($user_id, "optionsgold") and !wc_memberships_is_user_active_member($user_id, "futuresgold") and !wc_memberships_is_user_active_member($user_id, "bias") and !wc_memberships_is_user_active_member($user_id, "fibonaccigold") and !wc_memberships_is_user_active_member($user_id, "crypto") and !wc_memberships_is_user_active_member($user_id, "foundation")) {
-                wp_redirect(home_url('dashboard/futures/get-access'));
+                wp_redirect(home_url('dashboard/foundation/get-access'));
             }
         } elseif (is_page(402186) or $parent_page_id === 402186) {
             if (!wc_memberships_is_user_active_member($user_id, "bias")) {
-                wp_redirect(home_url('dashboard/futures/get-access'));
+                wp_redirect(home_url('dashboard/BIAS/get-access'));
             }
         } elseif (is_page(402191) or $parent_page_id === 402191) {
             if (!wc_memberships_is_user_active_member($user_id, "fibonaccigold") and !wc_memberships_is_user_active_member($user_id, "fibonaccisilver")) {
-                wp_redirect(home_url('dashboard/futures/get-access'));
+                wp_redirect(home_url('dashboard/fibonacci/get-access'));
             }
         } elseif (is_page(402190) or $parent_page_id === 402190) {
             if (!wc_memberships_is_user_active_member($user_id, "crypto") and !wc_memberships_is_user_active_member($user_id, "cryptosilver")) {
-                wp_redirect(home_url('dashboard/futures/get-access'));
+                wp_redirect(home_url('dashboard/crypto/get-access'));
             }
         } elseif (is_page(402907) or $parent_page_id === 402907) {
             if (!wc_memberships_is_user_active_member($user_id, "scanner")) {
-                wp_redirect(home_url('dashboard/futures/get-access'));
+                wp_redirect(home_url('dashboard/scanner/get-access'));
             }
         }
     }
