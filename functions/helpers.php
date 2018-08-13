@@ -401,28 +401,30 @@ function wl_redirect_if_not_logged_in()
         } else {
             wp_redirect(home_url('dashboard/account'));
         }
-    } /* else {
+    } else if (is_user_logged_in()) {
+        $page_id = get_field('id');
+        $parent_page_id = wp_get_post_parent_id($page_id);
         $user_active_memberships = wc_memberships_get_user_active_memberships();
 
-        if ($page_id === 401613 or $parent_page_id === 401613) {
+        if (is_page(401613) or $parent_page_id === 401613) {
             $valid_memberships = array("optionsgold", "optionssilver", "academy");
             $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
-        } else if ($page_id === 401958 or $parent_page_id === 401958) {
+        } else if (is_page(401958) or $parent_page_id === 401958) {
             $valid_memberships = array("futuresgold", "futuressilver");
             $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
-        } else if ($page_id === 401988 or $parent_page_id === 401988) {
+        } else if (is_page(401988) or $parent_page_id === 401988) {
             $valid_memberships = array("optionsgold", "futuresgold", "bias", "fibonaccigold", "crypto", "foundation");
             $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
-        } else if ($page_id === 402186 or $parent_page_id === 402186) {
+        } else if (is_page(402186) or $parent_page_id === 402186) {
             $valid_memberships = array("bias");
             $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
-        } else if ($page_id === 402191 or $parent_page_id === 402191) {
+        } else if (is_page(402191) or $parent_page_id === 402191) {
             $valid_memberships = array("fibonaccigold", "fibonaccisilver");
             $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
-        } else if ($page_id === 402190 or $parent_page_id === 402190) {
+        } else if (is_page(402190) or $parent_page_id === 402190) {
             $valid_memberships = array("crypto", "cryptosilver");
             $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
-        } else if ($page_id === 402907 or $parent_page_id === 402907) {
+        } else if (is_page(402907) or $parent_page_id === 402907) {
             $valid_memberships = array("scanner");
             $user_valid_memberships = array_intersect($user_active_memberships, $valid_memberships);
         }
