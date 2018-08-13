@@ -384,19 +384,19 @@ function wl_redirect_if_not_logged_in()
     if (!is_user_logged_in()) {
         $page_id = get_field('id');
         $parent_page_id = wp_get_post_parent_id($page_id);
-        if ($page_id === 401613 or $parent_page_id === 401613) {
+        if (is_page(401613) or $parent_page_id === 401613) {
             wp_redirect(home_url('dashboard/options/get-access'));
-        } else if ($page_id === 401958 or $parent_page_id === 401958) {
+        } else if (is_page(401958) or $parent_page_id === 401958) {
             wp_redirect(home_url('dashboard/futures/get-access'));
-        } else if ($page_id === 401988 or $parent_page_id === 401988) {
+        } else if (is_page(401988) or $parent_page_id === 401988) {
             wp_redirect(home_url('dashboard/foundation/get-access'));
-        } else if ($page_id === 402186 or $parent_page_id === 402186) {
+        } else if (is_page(402186) or $parent_page_id === 402186) {
             wp_redirect(home_url('dashboard/BIAS/get-access'));
-        } else if ($page_id === 402191 or $parent_page_id === 402191) {
+        } else if (is_page(402191) or $parent_page_id === 402191) {
             wp_redirect(home_url('dashboard/fibonacci/get-access'));
-        } else if ($page_id === 402190 or $parent_page_id === 402190) {
+        } else if (is_page(402190) or $parent_page_id === 402190) {
             wp_redirect(home_url('dashboard/crypto/get-access'));
-        } else if ($page_id === 402907 or $parent_page_id === 402907) {
+        } else if (is_page(402907) or $parent_page_id === 402907) {
             wp_redirect(home_url('dashboard/scanner/get-access'));
         } else {
             wp_redirect(home_url('dashboard/account'));
