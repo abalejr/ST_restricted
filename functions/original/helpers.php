@@ -381,9 +381,56 @@ function wl_get_latest_updates_query($access = array(), $count = 6)
 
 function wl_redirect_if_not_logged_in()
 {
+    $page_id = get_field('id');
+    $parent_page_id = wp_get_post_parent_id($page_id);
     if (!is_user_logged_in()) {
-        wp_redirect(home_url('dashboard/account'));
-    }
+        if (is_page(401613) or $parent_page_id === 401613) {
+            wp_redirect(home_url('dashboard/options/get-access'));
+        } elseif (is_page(401958) or $parent_page_id === 401958) {
+            wp_redirect(home_url('dashboard/futures/get-access'));
+        } elseif (is_page(401988) or $parent_page_id === 401988) {
+            wp_redirect(home_url('dashboard/foundation/get-access'));
+        } elseif (is_page(402186) or $parent_page_id === 402186) {
+            wp_redirect(home_url('dashboard/BIAS/get-access'));
+        } elseif (is_page(402191) or $parent_page_id === 402191) {
+            wp_redirect(home_url('dashboard/fibonacci/get-access'));
+        } elseif (is_page(402190) or $parent_page_id === 402190) {
+            wp_redirect(home_url('dashboard/crypto/get-access'));
+        } elseif (is_page(402907) or $parent_page_id === 402907) {
+            wp_redirect(home_url('dashboard/scanner/get-access'));
+        } else {
+            wp_redirect(home_url('dashboard/account'));
+        }
+    } /* else  {
+        $user_active_memberships = wc_memberships_get_user_active_memberships();
+
+        if (is_page(401613) or $parent_page_id === 401613) {
+            $valid_memberships = array("optionsgold", "optionssilver", "academy");
+            $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
+        } else if (is_page(401958) or $parent_page_id === 401958) {
+            $valid_memberships = array("futuresgold", "futuressilver");
+            $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
+        } else if (is_page(401988) or $parent_page_id === 401988) {
+            $valid_memberships = array("optionsgold", "futuresgold", "bias", "fibonaccigold", "crypto", "foundation");
+            $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
+        } else if (is_page(402186) or $parent_page_id === 402186) {
+            $valid_memberships = array("bias");
+            $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
+        } else if (is_page(402191) or $parent_page_id === 402191) {
+            $valid_memberships = array("fibonaccigold", "fibonaccisilver");
+            $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
+        } else if (is_page(402190) or $parent_page_id === 402190) {
+            $valid_memberships = array("crypto", "cryptosilver");
+            $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
+        } else if (is_page(402907) or $parent_page_id === 402907) {
+            $valid_memberships = array("scanner");
+            $user_valid_memberships = array_intersect($valid_memberships, $user_active_memberships);
+        }
+
+        if (count($user_valid_memberships) < 1) {
+            wp_redirect(home_url('dashboard/options/get-access'));
+        }
+    } */
 }
 
 function wl_get_dashboard_page_title($post_id)
